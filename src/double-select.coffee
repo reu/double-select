@@ -5,7 +5,7 @@ jQuery ($) ->
 
     $.extend settings, options
 
-    this.attr "multiple", true if this.attr "multiple"
+    this.attr "multiple", true unless this.attr "multiple"
 
     wrapper      = $("<div></div>").insertBefore(this)
     source       = $("<select multiple='multiple' />").prependTo(wrapper)
