@@ -5,6 +5,8 @@ jQuery ($) ->
 
     $.extend settings, options
 
+    this.attr "multiple", true if this.attr "multiple"
+
     wrapper      = $("<div></div>").insertBefore(this)
     source       = $("<select multiple='multiple' />").prependTo(wrapper)
     searchBox    = $("<input type='text' />").appendTo(wrapper)
