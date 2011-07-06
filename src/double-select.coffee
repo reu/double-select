@@ -1,6 +1,9 @@
 jQuery ($) ->
-  $.fn.doubleSelect = ->
-    this.attr "multiple", true
+  $.fn.doubleSelect = (options) ->
+    settings =
+      searchDelay: 500
+
+    $.extend settings, options
 
     wrapper      = $("<div></div>").insertBefore(this)
     source       = $("<select multiple='multiple' />").prependTo(wrapper)
@@ -23,9 +26,26 @@ jQuery ($) ->
     insertButton.click -> source.find(":selected").each(selectItem)
     removeButton.click -> destination.find(":selected").each(unselectItem)
 
+    delay = null
+
     search = ->
-      if $(this).val()
-        source.children("option").each ->
-          $(this).remove() unless $(this).text().indexOf(searchBox.val()) > 0
+      ajaxSearch() if $(this).val()
+
+    ajaxSearch = ->
+      execute = ->
+        $.ajax
+          url: settings.remoteUrl
+          data:
+            q: searchBox.val()
+          success: success
+
+      success = (data) ->
+        source.find("option").remove()
+        for option, item of data
+          if destination.find("option[value='#{item.value}']").length == 0
+            source.append $("<option value='#{item.value}'>#{item.name}</option>")
+
+      clearTimeout delay if delay?
+      delay = setTimeout execute, settings.searchDelay
 
     searchBox.keyup(search)
