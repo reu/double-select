@@ -9,9 +9,9 @@ jQuery ($) ->
 
     wrapper      = $("<div></div>").insertBefore(this)
     source       = $("<select multiple='multiple' />").prependTo(wrapper)
+    removeButton = $("<button><<</button>").appendTo(wrapper)
     searchBox    = $("<input type='text' />").appendTo(wrapper)
     insertButton = $("<button>>></button>").appendTo(wrapper)
-    removeButton = $("<button><<</button>").appendTo(wrapper)
     destination  = wrapper.append(this) && this
 
     selectItem = ->
