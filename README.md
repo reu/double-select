@@ -1,6 +1,6 @@
 # DoubleSelect
 
-Very simple searchable multiple select with ajax search support.
+Simple multiple select with ajax search support.
 
 ## Usage
 
