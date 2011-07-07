@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+
+    <title>reu/double-select @ GitHub</title>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/double-select.js"></script>
+
+    <script type="text/javascript">
+      jQuery(function(){
+          $("select").doubleSelect({remoteUrl: "test.json"});
+      });
+    </script>
+  </head>
+
+  <body>
+    <select multiple="true" name="image_and_words">
+      <option value="1">Pull me Under</option>
+      <option value="2">Another Day</option>
+      <option value="3">Take the Time</option>
+      <option value="4">Surrounded</option>
+      <option selected value="5">Metropolis - Part 1</option>
+      <option selected value="6">Under a Glass Moon</option>
+      <option value="7">Wait for Sleep</option>
+      <option selected value="8">Learning to Live</option>
+    </select>
+  </body>
+</html>
