@@ -16,7 +16,7 @@ jQuery ($) ->
     destination  = wrapper.append($(this).addClass('destination')) && this
 
     selectItem = ->
-      $(this).remove().appendTo(destination)
+      $(this).attr('selected', '').remove().appendTo(destination)
       settings.change()
 
     unselectItem = ->
@@ -24,6 +24,7 @@ jQuery ($) ->
       settings.change()
 
     destination.children(":not(:selected)").each -> $(this).remove().appendTo(source)
+    destination.children("option").attr('selected', '')
 
     source.delegate      "option", "dblclick", selectItem
     destination.delegate "option", "dblclick", unselectItem
