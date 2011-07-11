@@ -8,12 +8,12 @@ jQuery ($) ->
 
     this.attr "multiple", true unless this.attr "multiple"
 
-    wrapper      = $("<div></div>").insertBefore(this)
-    source       = $("<select multiple='multiple' />").prependTo(wrapper)
-    removeButton = $("<button><<</button>").appendTo(wrapper)
-    searchBox    = $("<input type='text' />").appendTo(wrapper)
-    insertButton = $("<button>>></button>").appendTo(wrapper)
-    destination  = wrapper.append(this) && this
+    wrapper      = $("<div class='double-select'></div>").insertBefore(this)
+    source       = $("<select multiple='multiple' class='source' />").prependTo(wrapper)
+    removeButton = $("<button class='button remove'><<</button>").appendTo(wrapper)
+    searchBox    = $("<input type='text' class='text_field' />").appendTo(wrapper)
+    insertButton = $("<button class='button insert'>>></button>").appendTo(wrapper)
+    destination  = wrapper.append($(this).addClass('destination')) && this
 
     selectItem = ->
       $(this).remove().appendTo(destination)
