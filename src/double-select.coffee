@@ -51,3 +51,7 @@ jQuery ($) ->
       delay = setTimeout execute, settings.searchDelay
 
     searchBox.keyup(search)
+
+    destination.closest("form:first").submit ->
+      destination.find("option").attr("selected", true)
+      source.find("option").attr("selected", false)
