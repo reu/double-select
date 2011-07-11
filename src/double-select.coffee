@@ -2,6 +2,7 @@ jQuery ($) ->
   $.fn.doubleSelect = (options) ->
     settings =
       searchDelay: 500
+      change: ->
 
     $.extend settings, options
 
@@ -16,11 +17,13 @@ jQuery ($) ->
 
     selectItem = ->
       $(this).remove().appendTo(destination)
+      settings.change()
 
     unselectItem = ->
       $(this).remove().appendTo(source)
+      settings.change()
 
-    destination.children(":not(:selected)").each(unselectItem)
+    destination.children(":not(:selected)").each -> $(this).remove().appendTo(source)
 
     source.delegate      "option", "dblclick", selectItem
     destination.delegate "option", "dblclick", unselectItem

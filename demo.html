@@ -10,7 +10,10 @@
 
     <script type="text/javascript">
       jQuery(function(){
-          $("select").doubleSelect({remoteUrl: "test.json"});
+          $("select").doubleSelect({
+            remoteUrl: "test.json",
+            change: function() { alert("I just changed") }
+          });
       });
     </script>
   </head>
