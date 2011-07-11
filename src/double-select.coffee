@@ -48,8 +48,8 @@ jQuery ($) ->
       success = (data) ->
         source.find("option").remove()
         for option, item of data
-          if destination.find("option[value='#{item.value}']").length == 0
-            source.append $("<option value='#{item.value}'>#{item.name}</option>")
+          if destination.find("option[value='#{item.id}']").length == 0
+            source.append $("<option value='#{item.id}'>#{item.name}</option>")
 
       clearTimeout delay if delay?
       delay = setTimeout execute, settings.searchDelay
