@@ -20,7 +20,7 @@ jQuery ($) ->
       settings.change()
 
     unselectItem = ->
-      $(this).remove().appendTo(source)
+      $(this).attr('selected', '').remove().appendTo(source)
       settings.change()
 
     destination.children(":not(:selected)").each -> $(this).remove().appendTo(source)
